@@ -1,0 +1,34 @@
+<div class="countdown-card" data-deadline="{{ include.date }}">
+  <div class="countdown-header">
+    <a
+      {% if include.link %}
+        href="{{ include.link }}"
+        target="_blank"
+        rel="noopener"
+      {% endif %}
+      class="countdown-name"
+    >
+      {{ include.name }}
+    </a>
+    <span class="countdown-description">{{ include.description }}</span>
+    <span class="countdown-date">{{ include.date }}</span>
+  </div>
+  <div class="countdown-timer">
+    <div class="countdown-unit">
+      <span class="countdown-value" data-unit="days">--</span>
+      <span class="countdown-label">Days</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="countdown-value" data-unit="hours">--</span>
+      <span class="countdown-label">Hours</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="countdown-value" data-unit="minutes">--</span>
+      <span class="countdown-label">Min</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="countdown-value" data-unit="seconds">--</span>
+      <span class="countdown-label">Sec</span>
+    </div>
+  </div>
+</div>

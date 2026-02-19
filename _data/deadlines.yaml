@@ -1,0 +1,24 @@
+- name: ICCAD 2025
+  description: International Conference on Computer-Aided Design
+  date: "2025-05-19"
+  link: https://iccad.com
+
+- name: DAC 2026
+  description: Design Automation Conference
+  date: "2025-11-21"
+  link: https://www.dac.com
+
+- name: ISSCC 2026
+  description: International Solid-State Circuits Conference
+  date: "2025-09-08"
+  link: https://www.isscc.org
+
+- name: HOST 2025
+  description: IEEE International Symposium on Hardware Oriented Security and Trust
+  date: "2025-03-15"
+  link: https://www.hostsymposium.org
+
+- name: ASPDAC 2026
+  description: Asia and South Pacific Design Automation Conference
+  date: "2025-07-14"
+  link: https://www.aspdac.com
