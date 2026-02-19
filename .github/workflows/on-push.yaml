@@ -19,6 +19,7 @@ jobs:
     if: github.run_number != 1
     uses: ./.github/workflows/update-citations.yaml
 
-  build-site:
-    needs: update-citations
-    uses: ./.github/workflows/build-site.yaml
+  # build-site disabled: custom static site is deployed directly to gh-pages
+  # build-site:
+  #   needs: update-citations
+  #   uses: ./.github/workflows/build-site.yaml
