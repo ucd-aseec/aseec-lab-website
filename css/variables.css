@@ -1,0 +1,42 @@
+/* ========== DESIGN TOKENS ========== */
+:root {
+  /* Backgrounds */
+  --bg-primary:      #0a0e1a;
+  --bg-secondary:    #0d1326;
+  --bg-card:         rgba(13, 19, 38, 0.6);
+
+  /* Accents */
+  --accent-cyan:     #00f0ff;
+  --accent-blue:     #0080ff;
+  --accent-purple:   #7b2dff;
+  --accent-gradient: linear-gradient(135deg, #00f0ff, #0080ff, #7b2dff);
+
+  /* Glow */
+  --glow-cyan:       rgba(0, 240, 255, 0.4);
+  --glow-blue:       rgba(0, 128, 255, 0.3);
+  --glow-soft:       rgba(0, 240, 255, 0.15);
+
+  /* Text */
+  --text-primary:    #e0e8ff;
+  --text-secondary:  #8892b0;
+  --text-accent:     #00f0ff;
+
+  /* Glass */
+  --glass-bg:        rgba(13, 19, 38, 0.5);
+  --glass-border:    rgba(0, 240, 255, 0.12);
+  --glass-blur:      20px;
+
+  /* Spacing */
+  --container-width: 1200px;
+  --card-radius:     16px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-med:  0.4s ease;
+  --transition-slow: 0.8s ease;
+
+  /* Fonts */
+  --font-display:    'Orbitron', monospace, sans-serif;
+  --font-body:       'Rajdhani', 'Segoe UI', sans-serif;
+  --font-mono:       'JetBrains Mono', 'Courier New', monospace;
+}
