@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware Security — ASEEC Blog</title>
+  <meta name="description" content="An introduction to hardware security challenges and solutions in modern chip design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-container">
+      <a class="nav-logo" href="../index.html">
+        <span class="logo-text">ASEEC</span>
+        <span class="logo-sub">ASIC Security</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#blog" class="active">Blog</a></li>
+        <li><a href="../index.html#deadlines">Deadlines</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <section class="blog-post-hero">
+    <div class="container">
+      <a href="../index.html#blog" class="blog-back">&larr; Back to Blog</a>
+      <div class="blog-post-tags">
+        <span class="tag">Security</span>
+        <span class="tag">Trust</span>
+      </div>
+      <h1>Hardware Security</h1>
+      <span class="blog-post-meta">ASEEC ASIC Security Group &middot; 2025</span>
+    </div>
+  </section>
+
+  <section class="blog-post-content">
+    <div class="container">
+
+      <p>As the semiconductor supply chain becomes increasingly globalized and complex, hardware security has emerged as a critical concern. Unlike software vulnerabilities that can be patched, hardware flaws are permanent once a chip is fabricated, making security a first-class design consideration.</p>
+
+      <h2>The Hardware Threat Landscape</h2>
+      <p>Hardware faces a diverse set of threats across its lifecycle:</p>
+      <ul>
+        <li><strong>Hardware Trojans:</strong> Malicious modifications inserted during design or fabrication that can leak data, cause denial-of-service, or create backdoors</li>
+        <li><strong>Side-Channel Attacks:</strong> Exploiting physical emissions (power, electromagnetic, timing) to extract secret keys from cryptographic implementations</li>
+        <li><strong>Fault Injection:</strong> Deliberately inducing faults via voltage glitching, laser, or electromagnetic pulses to bypass security mechanisms</li>
+        <li><strong>Reverse Engineering:</strong> Extracting the design or proprietary IP from a manufactured chip through delayering and imaging</li>
+        <li><strong>Counterfeiting:</strong> Producing unauthorized copies, remarking, or recycling used chips as new</li>
+      </ul>
+
+      <h2>Design-for-Trust</h2>
+      <p>Design-for-Trust (DfT) encompasses techniques embedded during the design phase to enhance a chip's resilience against attacks:</p>
+
+      <h3>Logic Locking</h3>
+      <p>Logic locking inserts key-controlled gates into the design netlist. Without the correct key, the chip produces incorrect outputs, protecting the IP from untrusted foundries. Modern techniques like SFLL (Stripped Functionality Logic Locking) are designed to resist SAT-based attacks.</p>
+
+      <h3>Physically Unclonable Functions (PUFs)</h3>
+      <p>PUFs exploit inherent manufacturing variations to generate unique, device-specific identifiers. They serve as silicon fingerprints for authentication without requiring secure key storage.</p>
+
+      <h3>Camouflaging</h3>
+      <p>Layout camouflaging makes standard cells appear identical under microscopy, preventing reverse engineering from extracting the netlist from chip images.</p>
+
+      <h2>Side-Channel Countermeasures</h2>
+      <p>Defending against side-channel attacks requires both algorithmic and implementation-level protections:</p>
+      <ul>
+        <li><strong>Masking:</strong> Splitting sensitive values into random shares so that any single share reveals no information</li>
+        <li><strong>Constant-Time Implementations:</strong> Ensuring execution time is independent of secret data</li>
+        <li><strong>Power Balancing:</strong> Equalizing power consumption across different operations to reduce power side-channel leakage</li>
+        <li><strong>Noise Injection:</strong> Adding random activity to obscure the signal an attacker is trying to measure</li>
+      </ul>
+
+      <div class="info-box">
+        <p><strong>Our Research:</strong> At ASEEC, we are developing ML-driven approaches to automatically detect side-channel vulnerabilities in RTL designs, enabling designers to identify and fix leakage points before fabrication.</p>
+      </div>
+
+      <h2>ML for Hardware Security</h2>
+      <p>Machine learning is transforming hardware security in several ways:</p>
+      <ul>
+        <li><strong>Trojan Detection:</strong> GNN-based classifiers that analyze gate-level netlists to identify suspicious circuit structures</li>
+        <li><strong>Side-Channel Analysis:</strong> Deep learning models that can break cryptographic implementations with fewer traces than traditional statistical methods</li>
+        <li><strong>Anomaly Detection:</strong> Identifying counterfeit or tampered chips through statistical analysis of test data</li>
+        <li><strong>Automated Verification:</strong> LLM-assisted security property checking and assertion generation</li>
+      </ul>
+
+      <h2>The Path Forward</h2>
+      <p>Hardware security requires a holistic approach spanning design, fabrication, testing, and deployment. As chips become more complex and supply chains more distributed, the role of AI-driven security tools will only grow. Our group is committed to building the next generation of automated hardware security solutions.</p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-text">ASEEC</span>
+          <span class="footer-desc">ASIC Security Group &middot; UC Davis</span>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html#hero">Home</a>
+          <a href="../index.html#team">Team</a>
+          <a href="../index.html#research">Research</a>
+          <a href="../index.html#blog">Blog</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ASEEC ASIC Security Group. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

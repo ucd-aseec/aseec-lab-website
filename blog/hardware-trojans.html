@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware Trojans — ASEEC Blog</title>
+  <meta name="description" content="A deep dive into hardware Trojans — malicious modifications to integrated circuits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-container">
+      <a class="nav-logo" href="../index.html">
+        <span class="logo-text">ASEEC</span>
+        <span class="logo-sub">ASIC Security</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#blog" class="active">Blog</a></li>
+        <li><a href="../index.html#deadlines">Deadlines</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <section class="blog-post-hero">
+    <div class="container">
+      <a href="../index.html#blog" class="blog-back">&larr; Back to Blog</a>
+      <div class="blog-post-tags">
+        <span class="tag">Trojans</span>
+        <span class="tag">Detection</span>
+      </div>
+      <h1>Hardware Trojans</h1>
+      <span class="blog-post-meta">ASEEC ASIC Security Group &middot; 2025</span>
+    </div>
+  </section>
+
+  <section class="blog-post-content">
+    <div class="container">
+
+      <p>Hardware Trojans are malicious, intentional modifications to an integrated circuit's design or fabrication that can compromise its security, reliability, or functionality. As the IC supply chain becomes increasingly outsourced and globalized, the threat of hardware Trojans has become one of the most pressing concerns in hardware security.</p>
+
+      <h2>Trojan Taxonomy</h2>
+      <p>Hardware Trojans can be classified along several dimensions:</p>
+
+      <h3>By Activation Mechanism</h3>
+      <ul>
+        <li><strong>Always-On Trojans:</strong> Continuously active, typically leaking information through side channels</li>
+        <li><strong>Triggered Trojans:</strong> Dormant until a specific condition is met (a rare input sequence, a counter reaching a value, or an external signal)</li>
+      </ul>
+
+      <h3>By Payload</h3>
+      <ul>
+        <li><strong>Information Leakage:</strong> Exfiltrating secret keys or sensitive data through covert channels</li>
+        <li><strong>Denial of Service:</strong> Causing the chip to malfunction or shut down under specific conditions</li>
+        <li><strong>Privilege Escalation:</strong> Bypassing security mechanisms to gain unauthorized access</li>
+        <li><strong>Performance Degradation:</strong> Subtly reducing chip reliability or lifetime</li>
+      </ul>
+
+      <h3>By Insertion Point</h3>
+      <ul>
+        <li><strong>Design Phase:</strong> Inserted by a rogue designer or through compromised IP cores</li>
+        <li><strong>Fabrication Phase:</strong> Added by an untrusted foundry through layout modifications</li>
+        <li><strong>Testing Phase:</strong> Exploiting test infrastructure (e.g., JTAG, scan chains) as attack vectors</li>
+      </ul>
+
+      <h2>Detection Techniques</h2>
+
+      <h3>Logic Testing</h3>
+      <p>Applying test vectors designed to activate potential Trojans and observing outputs for deviations. The challenge: Trojans are specifically designed to avoid activation during normal testing.</p>
+
+      <h3>Side-Channel Analysis</h3>
+      <p>Measuring power consumption, electromagnetic emissions, or timing characteristics and comparing against a golden (trusted) reference. Statistical techniques like principal component analysis can detect anomalies caused by additional Trojan circuitry.</p>
+
+      <h3>Formal Methods</h3>
+      <p>Using property checking and equivalence verification to prove that a design satisfies its security specifications. These methods can provide guarantees but face scalability challenges on large designs.</p>
+
+      <div class="info-box">
+        <p><strong>Our Approach:</strong> We use Graph Neural Networks (GNNs) to analyze gate-level netlists, learning to distinguish between benign circuit structures and suspicious Trojan-like patterns. Our models generalize across different Trojan types and benchmark circuits.</p>
+      </div>
+
+      <h3>ML-Based Detection</h3>
+      <p>Machine learning approaches have shown significant promise for Trojan detection:</p>
+      <ul>
+        <li><strong>Feature-Based Classification:</strong> Extracting circuit-level features (testability measures, structural properties) and training classifiers to identify Trojan-infected nets</li>
+        <li><strong>GNN-Based Analysis:</strong> Representing circuits as graphs and using graph neural networks to learn structural patterns indicative of Trojans</li>
+        <li><strong>Anomaly Detection:</strong> Training models on Trojan-free designs and flagging circuits that deviate from learned normal behavior</li>
+      </ul>
+
+      <h2>Prevention Strategies</h2>
+      <ul>
+        <li><strong>Split Manufacturing:</strong> Fabricating different layers of the chip at different foundries so no single entity sees the complete design</li>
+        <li><strong>Logic Locking:</strong> Adding key-controlled gates that prevent correct functionality without the secret key</li>
+        <li><strong>Obfuscation:</strong> Making the design difficult to understand or modify</li>
+        <li><strong>Runtime Monitoring:</strong> Embedding on-chip monitors that detect anomalous behavior during operation</li>
+      </ul>
+
+      <h2>Open Challenges</h2>
+      <p>Despite significant progress, several challenges remain: detecting ultra-small Trojans that cause minimal side-channel signatures, scaling detection techniques to billion-transistor designs, and developing unified frameworks that combine multiple detection approaches. At ASEEC, we continue to push the boundaries of what's possible with AI-driven Trojan detection and prevention.</p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-text">ASEEC</span>
+          <span class="footer-desc">ASIC Security Group &middot; UC Davis</span>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html#hero">Home</a>
+          <a href="../index.html#team">Team</a>
+          <a href="../index.html#research">Research</a>
+          <a href="../index.html#blog">Blog</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ASEEC ASIC Security Group. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

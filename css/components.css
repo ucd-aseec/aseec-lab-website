@@ -911,3 +911,136 @@
 .alumni-card .member-role {
   font-size: 0.7rem;
 }
+
+/* ========== BLOG POST PAGE ========== */
+.blog-post-hero {
+  padding: 160px 0 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-post-hero .blog-post-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.blog-post-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.blog-post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.blog-post-content {
+  padding: 60px 0 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-post-content .container {
+  max-width: 800px;
+}
+
+.blog-post-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin: 48px 0 16px;
+  letter-spacing: 0.04em;
+}
+
+.blog-post-content h3 {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 32px 0 12px;
+}
+
+.blog-post-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+  margin: 0 0 20px 24px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.blog-post-content li {
+  margin-bottom: 8px;
+}
+
+.blog-post-content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.blog-post-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.blog-post-content .info-box {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  margin: 32px 0;
+}
+
+.blog-post-content .info-box p {
+  margin-bottom: 0;
+}
+
+.blog-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  transition: var(--transition-fast);
+  margin-bottom: 32px;
+}
+
+.blog-back:hover {
+  color: var(--accent-cyan);
+}
+
+.blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.blog-card-link .glass-card:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .blog-post-hero h1 {
+    font-size: 1.6rem;
+  }
+}

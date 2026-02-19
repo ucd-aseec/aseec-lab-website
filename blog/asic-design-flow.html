@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASIC Design Flow — ASEEC Blog</title>
+  <meta name="description" content="An overview of the ASIC design flow, from specification and RTL design through synthesis, place-and-route, verification, and tape-out.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-container">
+      <a class="nav-logo" href="../index.html">
+        <span class="logo-text">ASEEC</span>
+        <span class="logo-sub">ASIC Security</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#blog" class="active">Blog</a></li>
+        <li><a href="../index.html#deadlines">Deadlines</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <section class="blog-post-hero">
+    <div class="container">
+      <a href="../index.html#blog" class="blog-back">&larr; Back to Blog</a>
+      <div class="blog-post-tags">
+        <span class="tag">EDA</span>
+        <span class="tag">ASIC</span>
+      </div>
+      <h1>ASIC Design Flow</h1>
+      <span class="blog-post-meta">ASEEC ASIC Security Group &middot; 2025</span>
+    </div>
+  </section>
+
+  <section class="blog-post-content">
+    <div class="container">
+
+      <p>Application-Specific Integrated Circuits (ASICs) power everything from smartphones and data centers to medical devices and autonomous vehicles. Unlike FPGAs, ASICs are custom-fabricated for a specific application, delivering optimal performance, power efficiency, and area utilization. The journey from concept to silicon involves a rigorous, multi-stage design flow.</p>
+
+      <h2>1. Specification &amp; Architecture</h2>
+      <p>Every ASIC begins with a detailed specification that defines the chip's functionality, performance targets, power budget, and area constraints. Architects translate these requirements into a high-level block diagram, partitioning the design into functional modules and defining the interfaces between them.</p>
+      <p>Key decisions at this stage include the choice of bus architecture, memory hierarchy, clock domains, and I/O standards. These choices have cascading effects throughout the design flow and are difficult to change later.</p>
+
+      <h2>2. RTL Design</h2>
+      <p>Register Transfer Level (RTL) design captures the chip's behavior in a hardware description language such as Verilog or SystemVerilog. Designers write synthesizable code that describes how data moves between registers and the combinational logic that transforms it.</p>
+      <p>Modern RTL design increasingly leverages <strong>LLM-assisted code generation</strong> to accelerate development, with AI tools suggesting module implementations, detecting common coding errors, and ensuring adherence to coding guidelines.</p>
+
+      <h2>3. Functional Verification</h2>
+      <p>Verification consumes the majority of the ASIC development effort. Engineers build testbenches using frameworks like UVM (Universal Verification Methodology) to systematically exercise the design and check for correctness.</p>
+      <ul>
+        <li><strong>Simulation:</strong> Running the RTL against stimulus vectors to verify behavior</li>
+        <li><strong>Formal Verification:</strong> Mathematically proving properties about the design</li>
+        <li><strong>Emulation:</strong> Mapping the design onto specialized hardware for faster testing</li>
+        <li><strong>Coverage Analysis:</strong> Measuring how thoroughly the design has been exercised</li>
+      </ul>
+
+      <h2>4. Logic Synthesis</h2>
+      <p>Synthesis transforms the RTL description into a gate-level netlist using a standard cell library provided by the foundry. The synthesis tool optimizes the design for timing, area, and power, mapping abstract operations to physical gates.</p>
+      <div class="info-box">
+        <p><strong>Key Insight:</strong> Modern synthesis tools employ ML-based optimization to explore the vast design space more efficiently, finding better trade-offs between timing, power, and area than traditional heuristic approaches.</p>
+      </div>
+
+      <h2>5. Place &amp; Route</h2>
+      <p>Physical design transforms the gate-level netlist into a geometric layout. This involves:</p>
+      <ul>
+        <li><strong>Floorplanning:</strong> Arranging major blocks on the chip area</li>
+        <li><strong>Placement:</strong> Positioning individual standard cells within each block</li>
+        <li><strong>Clock Tree Synthesis:</strong> Building a balanced clock distribution network</li>
+        <li><strong>Routing:</strong> Connecting cells with metal wires across multiple layers</li>
+      </ul>
+      <p>Reinforcement learning techniques are increasingly being applied to floorplanning and placement, with agents learning to optimize chip layouts through interaction with EDA tool environments.</p>
+
+      <h2>6. Signoff &amp; Tape-Out</h2>
+      <p>Before fabrication, the design undergoes extensive signoff checks:</p>
+      <ul>
+        <li><strong>Static Timing Analysis (STA):</strong> Verifying that all timing constraints are met</li>
+        <li><strong>Design Rule Check (DRC):</strong> Ensuring the layout conforms to foundry manufacturing rules</li>
+        <li><strong>Layout vs. Schematic (LVS):</strong> Confirming the layout matches the intended circuit</li>
+        <li><strong>Power Analysis:</strong> Validating that power consumption meets specifications</li>
+      </ul>
+      <p>Once all checks pass, the design data (GDSII) is sent to the foundry for fabrication &mdash; this milestone is known as <strong>tape-out</strong>.</p>
+
+      <h2>The Role of AI in Modern ASIC Design</h2>
+      <p>At the ASEEC ASIC Security Group, we are actively researching how AI and ML can augment every stage of this flow &mdash; from LLM-assisted RTL generation to RL-driven physical design optimization, and ML-based security verification. Our goal is to make ASIC design faster, more secure, and more accessible.</p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-text">ASEEC</span>
+          <span class="footer-desc">ASIC Security Group &middot; UC Davis</span>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html#hero">Home</a>
+          <a href="../index.html#team">Team</a>
+          <a href="../index.html#research">Research</a>
+          <a href="../index.html#blog">Blog</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ASEEC ASIC Security Group. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

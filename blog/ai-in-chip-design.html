@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in Chip Design — ASEEC Blog</title>
+  <meta name="description" content="How artificial intelligence and machine learning are transforming chip design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-container">
+      <a class="nav-logo" href="../index.html">
+        <span class="logo-text">ASEEC</span>
+        <span class="logo-sub">ASIC Security</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#blog" class="active">Blog</a></li>
+        <li><a href="../index.html#deadlines">Deadlines</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <section class="blog-post-hero">
+    <div class="container">
+      <a href="../index.html#blog" class="blog-back">&larr; Back to Blog</a>
+      <div class="blog-post-tags">
+        <span class="tag">AI</span>
+        <span class="tag">ML</span>
+        <span class="tag">EDA</span>
+      </div>
+      <h1>AI in Chip Design</h1>
+      <span class="blog-post-meta">ASEEC ASIC Security Group &middot; 2025</span>
+    </div>
+  </section>
+
+  <section class="blog-post-content">
+    <div class="container">
+
+      <p>Artificial intelligence is fundamentally reshaping how chips are designed, verified, and optimized. From Google's AlphaChip demonstrating superhuman chip floorplanning to LLM-powered RTL generation, AI is becoming an indispensable tool in the semiconductor industry's quest to keep pace with Moore's Law scaling challenges.</p>
+
+      <h2>ML-Driven Physical Design</h2>
+
+      <h3>Reinforcement Learning for Placement</h3>
+      <p>RL agents learn to place circuit components on a chip canvas by receiving rewards based on metrics like wirelength, congestion, and timing. Google's AlphaChip showed that RL can produce chip layouts competitive with or superior to those created by human experts, in a fraction of the time.</p>
+      <p>The key insight is formulating placement as a sequential decision-making problem where an agent places one block at a time, observing the partial layout as state and receiving quality feedback as reward.</p>
+
+      <h3>ML for Routing Optimization</h3>
+      <p>After placement, routing connects the cells with metal wires. ML models predict congestion hotspots, guide global routing decisions, and optimize detailed routing for manufacturability. These models learn from millions of previous routing solutions to make better decisions.</p>
+
+      <h2>LLMs for Hardware Design</h2>
+
+      <h3>RTL Code Generation</h3>
+      <p>Large language models fine-tuned on hardware description languages can generate synthesizable Verilog and SystemVerilog from natural language specifications. This dramatically accelerates the design entry phase:</p>
+      <ul>
+        <li><strong>Module Generation:</strong> Creating complete RTL modules from textual descriptions</li>
+        <li><strong>Bug Detection:</strong> Identifying common HDL coding errors and suggesting fixes</li>
+        <li><strong>Testbench Generation:</strong> Automatically creating verification environments</li>
+        <li><strong>Documentation:</strong> Generating design documentation from RTL code</li>
+      </ul>
+
+      <div class="info-box">
+        <p><strong>Our Work:</strong> At ASEEC, we are developing LLM-based agents that can not only generate RTL but also reason about security properties, ensuring that generated designs are free from common vulnerabilities.</p>
+      </div>
+
+      <h3>LLM-Assisted Verification</h3>
+      <p>Verification is the most time-consuming part of chip design. LLMs are being applied to:</p>
+      <ul>
+        <li>Generate SystemVerilog assertions from informal specifications</li>
+        <li>Create coverage-directed test stimuli</li>
+        <li>Analyze waveforms and debug failing simulations</li>
+        <li>Review RTL code for potential issues</li>
+      </ul>
+
+      <h2>AI for Design Space Exploration</h2>
+      <p>Modern chip design involves exploring vast parameter spaces. ML models can predict design quality metrics (power, performance, area) orders of magnitude faster than running full EDA flows, enabling rapid design space exploration:</p>
+      <ul>
+        <li><strong>Surrogate Models:</strong> Neural networks trained to predict synthesis or place-and-route outcomes from design parameters</li>
+        <li><strong>Bayesian Optimization:</strong> Efficiently searching the design space by modeling the objective function</li>
+        <li><strong>Transfer Learning:</strong> Leveraging knowledge from previous designs to accelerate optimization of new ones</li>
+      </ul>
+
+      <h2>AI for Security Verification</h2>
+      <p>An emerging and critical application area is using AI to verify hardware security properties:</p>
+      <ul>
+        <li><strong>Trojan Detection:</strong> GNN-based models analyzing netlists for malicious modifications</li>
+        <li><strong>Side-Channel Leakage Detection:</strong> ML models identifying information leakage in cryptographic implementations at the RTL level</li>
+        <li><strong>Vulnerability Discovery:</strong> LLM agents that systematically probe designs for security weaknesses</li>
+      </ul>
+
+      <h2>Challenges and Future Directions</h2>
+      <p>Despite remarkable progress, key challenges remain:</p>
+      <ul>
+        <li><strong>Reliability:</strong> Ensuring AI-generated designs meet rigorous correctness requirements</li>
+        <li><strong>Interpretability:</strong> Understanding why AI tools make specific design decisions</li>
+        <li><strong>Generalization:</strong> Training models that work across different design styles, technology nodes, and application domains</li>
+        <li><strong>Integration:</strong> Seamlessly incorporating AI tools into existing EDA workflows</li>
+      </ul>
+      <p>The ASEEC group is at the forefront of applying AI to both improve chip design productivity and enhance hardware security, working toward a future where intelligent tools are integral partners in the semiconductor design process.</p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-text">ASEEC</span>
+          <span class="footer-desc">ASIC Security Group &middot; UC Davis</span>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html#hero">Home</a>
+          <a href="../index.html#team">Team</a>
+          <a href="../index.html#research">Research</a>
+          <a href="../index.html#blog">Blog</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ASEEC ASIC Security Group. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
